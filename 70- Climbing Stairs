@@ -1,0 +1,26 @@
+class Solution {
+public:
+    int climbStairs(int n) {
+       
+        int x=2;
+        int y=3;
+        int ans=0;
+        if(n<=3)
+        return n;
+        else
+        {
+           for(int i=4;i<=45;i++)
+           {
+               if(i==n)
+               {
+                   ans=x+y;
+               }
+               int t=y;
+               y=x+y;
+               x=t;
+
+           }   
+        }
+        return ans;
+    }
+};
