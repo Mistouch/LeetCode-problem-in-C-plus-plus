@@ -1,0 +1,32 @@
+class Solution {
+public:
+      int dp[1001][1001];
+      void reset()
+      {
+          for(int i=0;i<1001;i++)
+          {
+              for(int j=0;j<1001;j++)
+              dp[i][j]=-1;
+          }
+      }
+      int lcs(string &s1 , string &s2, int x , int y)
+      {
+          if(dp[x][y]!=-1) return dp[x][y];
+          if(x==s1.size() || y==s2.size()) return 0;
+          int ans=0;
+          if(s1[x]==s2[y])
+           ans= 1+lcs(s1,s2,x+1,y+1);
+           else
+           {
+               ans=max(lcs(s1,s2,x+1,y),lcs(s1,s2,x,y+1));
+           }
+           return dp[x][y]=ans;
+      }
+    int longestCommonSubsequence(string text1, string text2) {
+     
+     reset();
+
+      return lcs(text1, text2, 0,0);
+        
+    }
+};
